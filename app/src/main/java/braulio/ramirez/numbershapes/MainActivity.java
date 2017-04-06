@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,9 +28,32 @@ public class MainActivity extends AppCompatActivity {
 
         String message= "";
 
-       // userInput.getText().toString();
+        Number number = new Number();
 
-        //Log.i("Numero ingresado", userInput.getText().toString());
+        number.number =Integer.parseInt(userInput.getText().toString());
+
+        if (number.isSquare()){
+
+            if(number.isTriangular()){
+
+                message="Number is square and triangular";
+
+            }
+
+            message="Number is square";
+
+        }  else if(number.isTriangular()){
+
+            message="Number is triangular";
+
+        }else{
+
+        message="Number is neither square nor triangular";
+    }
+
+    Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
+
+    //Log.i("Numero ingresado", userInput.getText().toString());
     }
 
 
