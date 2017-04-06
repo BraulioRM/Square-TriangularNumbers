@@ -22,38 +22,47 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void testNumber (View view){
+    public void testNumber (View view) {
 
-        EditText userInput = (EditText)findViewById(R.id.UserInput);
+        EditText userInput = (EditText) findViewById(R.id.UserInput);
 
-        String message= "";
+        String message = "";
 
-        Number number = new Number();
 
-        number.number =Integer.parseInt(userInput.getText().toString());
+        if (userInput.getText().toString().isEmpty()) {
 
-        if (number.isSquare()){
+            message = " Por favor ingrese un número";
 
-            if(number.isTriangular()){
 
-                message="Number is square and triangular";
 
+        } else {
+
+            Number number = new Number();
+
+            number.number = Integer.parseInt(userInput.getText().toString());
+
+            if (number.isSquare()) {
+
+                if (number.isTriangular()) {
+
+                    message = "Number is square and triangular";
+
+                } else{
+
+                    message = "Number is square";
+                }
+
+            } else if (number.isTriangular()) {
+
+                message = "Number is triangular";
+
+            } else {
+
+                message = "Number is neither square nor triangular";
             }
 
-            message="Number is square";
-
-        }  else if(number.isTriangular()){
-
-            message="Number is triangular";
-
-        }else{
-
-        message="Number is neither square nor triangular";
-    }
-
-    Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
-
-    //Log.i("Numero ingresado", userInput.getText().toString());
+        }
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 
 
